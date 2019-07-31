@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>AD FS 2.0 RelayState Generator</title>
+    <style type="text/css">
+        .textbox {width: 500px;}
+    </style>
+    <script type="text/javascript">
+        function SubmitMe() {
+            var RPID = encodeURIComponent(document.getElementById('txtRPID').value);
+			var RelayState = encodeURIComponent(document.getElementById('txtRelayState').value)+encodeURIComponent(document.getElementById('txtLOID').value)+encodeURIComponent(document.getElementById('txtRelayState2').value);
+			var unencoded = "RPID=" + RPID + "&RelayState=" + RelayState;
+            var result = document.getElementById('txtURL').value + "?RelayState=" + encodeURIComponent(unencoded);
+            document.getElementById('lblDisplay').innerHTML = result;
+        }
+    </script>
+	<script>
+	function copyText(element) {
+  var range, selection, worked;
+
+  if (document.body.createTextRange) {
+    range = document.body.createTextRange();
+    range.moveToElementText(element);
+    range.select();
+  } else if (window.getSelection) {
+    selection = window.getSelection();        
+    range = document.createRange();
+    range.selectNodeContents(element);
+    selection.removeAllRanges();
+    selection.addRange(range);
+  }
+  
+  try {
+    document.execCommand('copy');
+    alert('text copied');
+  }
+  catch (err) {
+    alert('unable to copy text');
+  }
+}
+	</script>
+</head>
+<body style="color: black">
+    <p><br />
+	<strong>AD FS 2.0 RelayState Generator for IDP Initiated Signon </strong></p>
+    <table>
+        <tr>
+            <td>IDP URL String (DO NOT EDIT)</td>
+            <td><input type="text" value="https://adfs.slhn.org/adfs/ls/idpinitiatedsignon.aspx" class="textbox" id="txtURL" /></td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>Relying Party Identifier (DO NOT EDIT)</td>
+            <td><input type="text" value="https://sluhn.csod.com/samldefault.aspx" class="textbox" id="txtRPID" /></td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+		<tr>
+            <td>Relay State / Target App pt 1 (DO NOT EDIT)</td>
+            <td><input type="text" value="https://sluhn.csod.com/evaluations/EvalLaunch.aspx?loid=" class="textbox" id="txtRelayState" /></td>
+        </tr>
+		<tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+		<tr>
+            <td>Relay State / Target App pt 2 (DO NOT EDIT)</td>
+            <td><input type="text" value="&evalLvl=1&redirectUrl=~/phnx/driver.aspx?routename=Social/UniversalProfile/Transcript&TargetUser=guid=" class="textbox" id="txtRelayState2" /></td>
+        </tr>
+		<tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+		<tr>
+            <td>LO ID</td>
+            <td><input type="text" value="b9e0e1f6-c335-49ca-9659-2780911d7cbf" class="textbox" id="txtLOID" /></td>
+        </tr>
+		<tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+    </table>
+    <br />
+    <strong>
+    <input type="button" onclick="SubmitMe()" value="Generate URL" /></strong>
+    <br /><hr /><strong>Results:</strong><br /><br />
+    <label id="lblDisplay" onClick='copyText(this)'></label>
+</body>
+</html>
