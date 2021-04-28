@@ -1,14 +1,70 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>ADFS 2.0 RelayState Generator</title>
     <style type="text/css">
-        .textbox {width: 500px;}
+        .textbox {width:750px}
+	:root {
+	--primary-color: hsl(250, 100%, 25%);
+	--text-color: #141414;
+	--text-color-inverted: #ffffff;
+	}
+
+	pre {
+	background: var(--primary-color);
+	color: var(--text-color-inverted);
+	font-family: "Operator Mono", "Fira Code", monospace;
+	padding: 16px;
+	}
+	p {
+	background: var(--primary-color);
+	color: var(--text-color-inverted);
+	font-family: "Operator Mono", "Fira Code", monospace;
+	padding: 16px;
+	}
+	.host {
+		font-family: system-ui;
+        font-size: 20px;
+		display: table-cell; 
+      }
+      fieldset {
+        border-color: var(--primary-color);
+      }
+      legend {
+        color: var(--primary-color);
+        font-family: system-ui;
+        font-size: 24px;
+        margin-bottom: 12px;
+      }
+	.container {
+	width: 100%;
+	clear: both;
+	}
+
+	.container input {
+	float: right;
+	clear: both;
+	display: table-cell; 
+	}
+	
+	.div{ display: table-row;width:100%}
+.button {
+  font-family: arial;
+  color: #FFFFFF !important;
+  font-size: 14px;
+  text-shadow: 1px 1px 0px #000000;
+  box-shadow: 1px 1px 1px #BEE2F9;
+  padding: 10px 25px;
+  border-radius: 10px;
+  border: 2px solid #3866A3;
+  background: #150080;
+}
+
     </style>
     <script type="text/javascript">
         function SubmitMe() {
             var RPID = encodeURIComponent(document.getElementById('txtRPID').value);
-			var RelayState = encodeURIComponent(document.getElementById('txtRelayState').value)+encodeURIComponent(document.getElementById('txtLOID').value)+encodeURIComponent(document.getElementById('txtRelayState2').value);
+			var RelayState = encodeURIComponent(document.getElementById('txtRelayState').value);
 			var unencoded = "RPID=" + RPID + "&RelayState=" + RelayState;
             var result = document.getElementById('txtURL').value + "?RelayState=" + encodeURIComponent(unencoded);
             document.getElementById('lblDisplay').innerHTML = result;
@@ -41,55 +97,36 @@
 	</script>
 </head>
 <body style="color: black">
-    <p><br />
-	<strong>ADFS 2.0 RelayState Generator for IDP Initiated Signon </strong></p>
-    <table>
-        <tr>
-            <td>IDP URL String (DO NOT EDIT)</td>
-            <td><input type="text" value="https://adfs.slhn.org/adfs/ls/idpinitiatedsignon.aspx" class="textbox" id="txtURL" /></td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>Relying Party Identifier (DO NOT EDIT)</td>
-            <td><input type="text" value="https://sluhn.csod.com/samldefault.aspx" class="textbox" id="txtRPID" /></td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-		<tr>
-            <td>Relay State / Target App pt 1 (DO NOT EDIT)</td>
-            <td><input type="text" value="https://sluhn.csod.com/evaluations/EvalLaunch.aspx?loid=" class="textbox" id="txtRelayState" /></td>
-        </tr>
-		<tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-		<tr>
-            <td>Relay State / Target App pt 2 (DO NOT EDIT)</td>
-            <td><input type="text" value="&evalLvl=1&redirectUrl=~/phnx/driver.aspx?routename=Social/UniversalProfile/Transcript&TargetUser=guid=" class="textbox" id="txtRelayState2" /></td>
-        </tr>
-		<tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-		<tr>
-            <td>LO ID</td>
-            <td><input type="text" value="b9e0e1f6-c335-49ca-9659-2780911d7cbf" class="textbox" id="txtLOID" /></td>
-        </tr>
-		<tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-        
-    </table>
-    <br />
-    <strong>
-    <input type="button" onclick="SubmitMe()" value="Generate URL" /></strong>
-    <br /><hr /><strong>Results:</strong><br /><br />
-    <label id="lblDisplay" onClick='copyText(this)'></label>
+	<div style="display: table;" class="container">
+	<form>
+	<fieldset>
+	<legend><strong>ADFS 2.0 RelayState Generator for IDP Initiated Signon </strong></legend>
+	<div class="div">
+	<label class="host">IDP URL String (DO NOT EDIT)</label>
+	<input type="text" value="https://adfs.slhn.org/adfs/ls/idpinitiatedsignon.aspx" class="textbox" id="txtURL"/>
+	</div>
+	<div class="div">
+	</div>
+	<div class="div">
+	<label class="host">Relying Party Identifier (DO NOT EDIT)</label>
+	<input type="text" value="https://sluhn.csod.com/samldefault.aspx" class="textbox" id="txtRPID" />
+	</div>
+	<div class="div">
+	</div>
+	<div class="div">
+	<label class="host">Relay State / Target App</label>
+	<input type="text" value="https://sluhn.csod.com/evaluations/EvalLaunch.aspx?loid=" class="textbox" id="txtRelayState"/>
+	</div>
+	</fieldset>
+	</form>
+	</div>
+	</br>
+	<strong><input class="button" type="button" onclick="SubmitMe()" value="Generate URL" /></strong>
+	<hr />
+	<fieldset>
+	<legend><strong>Results:</strong></legend>
+	<p style="max-width:1100px" style id="lblDisplay" onClick='copyText(this)'></p>
+	</fieldset>
+	
 </body>
 </html>
