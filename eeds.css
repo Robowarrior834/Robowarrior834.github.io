@@ -1,0 +1,353 @@
+
+/*
+    READ ME:
+    
+    ** Any properties that are colors, fonts, or font-sizes are properties that can easily be swapped out with your own styling. 
+    You'll see "Simple Swap" above those properties.
+    Any other properties you alter will likely alter the format, so be cautious when doing so.
+
+
+    ** If you have bootstrap enabled, you'll need to specify !important next to properties you wish to override.
+*/
+
+
+/*-------------------------------------
+    Main Styling
+-------------------------------------*/
+
+
+/*
+    Overall Styling for Calendar
+*/
+.calendar_wrapper 
+{
+    /*Easy Swap*/
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+
+    /*Links in Calendar*/
+    .calendar_wrapper a {
+        
+        /*Simple Swap*/
+            text-decoration: none;
+            color: #007bff;
+            background-color: transparent;
+    }
+
+        /*Small links*/
+        .calendar_wrapper a.small {
+            /*Simple Swap*/
+                font-size: 80%;
+                font-weight: 400;
+        }
+
+
+    /*Date Header at top of Calendar*/
+    .calendar_wrapper .date_header {
+       
+        margin-top: .5rem !important;
+        line-height: 1.2;
+        
+        /*Simple Swap*/
+            font-size: 1.25rem;
+            font-weight: 500;
+    }
+
+    /*Custom Calendar Links Wrapper (only applies if there are custom calendars setup)*/
+    .calendar_wrapper .custom_calendar_wrapper 
+    {
+        margin-top:1rem;
+    
+    }
+
+
+/*-------------------------------------
+    Calendar Activity List List Styling
+-------------------------------------*/
+
+
+/*Div that surrounds the listing of activities*/
+.calendar_activity_list_wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+    /*Surrounding Div of Activity Details*/
+    .calendar_activity_item_wrapper {
+       
+        float: left;
+        width: 20rem;
+        margin: .5rem;
+    }
+
+
+    /*Main Styling for the basic activity information on the calendar*/
+    .calendar_activity_item {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        background-clip: border-box;
+        border-radius: .25rem;
+        flex: 1 1 auto;
+        margin: 10px 3px 10px 3px;
+        height: 100%;
+
+        /*Simple Swap*/
+        border: 1px solid rgba(0,0,0,.125); /*Gray Border*/
+        background-color: #fff; /*white*/
+    }
+
+        /*Text Body Div for Activity Details*/
+        .calendar_activity_item .body {
+            flex: 1 1 auto;
+            padding: 1rem;
+        }
+
+
+        /*Event Title Link*/
+        .event_title {
+            line-height: 1.2;
+
+            /*Simple Swap*/
+                color: #007bff; /*Bootstrap Blue*/
+                text-decoration: none;
+                font-size: 1rem;
+                font-weight: 500;
+        }
+
+    /*Label for activity details (ex: When?, Where?_*/
+    .activity_detail_label 
+    {
+        /*Simple Swap*/
+            font-weight: bold;
+    }
+
+
+
+/*-------------------------------------
+    Select a Month Styling
+-------------------------------------*/
+#Calendar_Choose_Month {
+    margin-top:20px;
+}
+
+/*Div Surrounding the months*/
+.all_months_wrapper {
+    border-top: 1px solid #dee2e6 !important;
+    padding-top: .25rem;
+    margin-top: 1rem;
+}
+
+    /*Div rapper around each Month Link*/
+    .month_wrapper {
+        width: 100px;
+        float: left;
+        margin: .25rem;
+    }
+
+        /*month button*/
+        .month {
+            margin: .25rem;
+            border-radius: .25rem;
+            padding: .25rem .5rem;
+            line-height: 1.5;
+            display: block;
+            width: 80px;
+            text-align: center;
+    
+            /*Simple Swap*/
+                font-size: .875rem;
+                border: 1px solid #007bff; /*Bootstrap Blue*/
+                text-decoration: none;
+                color: #007bff; /*Bootstrap Blue*/
+        }
+
+            /*Current Month Hover
+                Bootstrap Blue Background, white text
+            */
+            .month:hover {
+                /*Simple Swap*/
+                    background-color: #007bff; /*Bootstrap Blue*/
+                    border-color: #0062cc; /*Darkest Bootstrap Blue*/
+                    color: #fff; /*White*/
+            }
+     
+            /*Current Month
+                Bootstrap blue button w/white text*/
+            .current.month {
+                display: inline-block;
+                text-align: center;
+                vertical-align: middle;
+                transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+
+                /*Simple Swap*/
+                    background-color: #007bff; /*Bootstrap Blue*/
+                    color: #fff; /*White*/
+                    border-color: #007bff; /*Bootstrap Blue*/
+                    font-weight: 400;
+            }
+
+
+
+                /*Current Month Hover
+                    Darkens the blue to indicate hover
+                */
+                .current.month:hover 
+                {
+                    /*Simple Swap*/
+                        background-color: #0069d9; /*Darker Bootstrap Blue*/
+                        border-color: #0062cc; /*Darkest Bootstrap Blue*/
+                }
+
+
+
+
+/*Year link at Top of Selecting a Month Styling*/
+.year {
+    margin: .25rem;
+    border-radius: .25rem;
+    padding: .5rem .75rem;
+    line-height: 1.5;
+    text-align: center;
+   
+    /*Simple Swap*/
+        color: #6c757d !important; /*Bootstrap Dark Grey*/
+        border: 1px solid #dee2e6 !important; /*Bootstrap Light Grey*/
+        text-decoration: none;
+}
+
+    /*Year link hover
+        background color darkened
+    */
+    .year:hover {
+        
+        /*Simple Swap*/
+            background-color: #e2e6ea; /*Slightly darker Grey*/
+    }
+
+
+    /*Selected Year link, Bolded Font, Darker Text and gray background*/
+    .year.selected {
+        
+        /*Simple Swap*/
+            color: #212529 !important; /*Close to Black (Bootstrap text-dark)*/
+            background-color: #f8f9fa; /*Light grey (Bootstrap btn-light)*/
+            font-weight: bold;
+    }
+
+    
+
+
+
+/*-------------------------------------
+    Custom Calendar Styling
+-------------------------------------*/
+
+/* Custom Calendar Button*/
+.custom_calendar 
+{
+    margin: .45rem .25rem .545rem .25rem;
+    border-radius: .25rem;
+    padding: .25rem .25rem;
+    font-size: .875rem;
+    line-height: 1.5;
+
+    /*Simple Swap*/
+        color: #007bff; /*Bootstrap Blue*/
+        border: 1px solid #007bff;/*Bootstrap Blue*/
+        text-decoration: none;
+}
+
+
+    /*Custom Calendar  Button Hover*/
+    .custom_calendar:hover 
+    {
+        
+        /*Simple Swap*/
+        background-color: #007bff;  /*Bootstrap Blue*/
+        border-color: #0062cc;  /* Darker Bootstrap Blue*/
+        color: #fff; /*White*/
+    }
+
+
+    /*Custom Calendar Currently Being Viewed Button*/
+    .custom_calendar.selected {
+        display: inline-block;
+        text-align: center;
+        vertical-align: middle;
+        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+       
+        /*Simple Swap*/
+            background-color: #007bff; /*Bootstrap Blue*/
+            color: #fff;
+            border-color: #007bff; /*Bootstrap Blue*/
+            font-weight: 400;
+    }
+
+        /*Custom Calendar Currently Being Viewed Button Hover*/
+        .custom_calendar.selected:hover 
+        {
+              /*Simple Swap*/
+                background-color: #0069d9; /*Darker Bootstrap Blue*/
+                border-color: #0062cc;/*Darkest Bootstrap Blue*/
+        }
+
+
+
+
+/*-------------------------------------
+    Specific Event Details Styling
+    Accessed after user selects an activity from the Calendar
+-------------------------------------*/
+
+/*Container Div for the Selected Activity Information.  This is a Div you should have manually entered on your page.*/
+#Calendar_Activity_Detail {
+   
+    padding-bottom: 10px;
+    padding-top: 10px;
+    
+    /*Simple Swap*/
+     background-color: #fff;/*White*/
+}
+
+
+/*Bold (Initially Blue) Headers on the Event Details (Example: General Information, Objectives, Disclosure Statements, Accreditation...) */
+.section_subtitle 
+{
+    /*Simple Swap*/
+        color: #174160; /*Dark Blue*/
+        font-weight: bold;
+        font-size: 13px;
+}
+
+
+/*Bold Headers on Event Details (Example: "Date", "Time", "Conference Name", "Conference Location")*/
+.standard_activity_row_header {
+    vertical-align: top;
+    padding-left: 20px;
+
+    /*Simple Swap*/
+    font-weight: bold;
+}
+
+/*Adds the Back Button Arrow to the Back Button From the Selected Event*/
+.back_button {
+    display: block;
+    width: 100%;
+    margin: .25rem;
+    border-radius: .25rem;
+    padding: .25rem .5rem;
+    line-height: 1.5;
+    text-align: center;
+
+    /*Simple Swap*/
+        font-size: .875rem;
+        border: 1px solid #6c757d; /*Bootstrap Grey*/
+        text-decoration: none;
+        color: #6c757d !important; /*Bootstrap Grey*/
+}
+
+
+        
